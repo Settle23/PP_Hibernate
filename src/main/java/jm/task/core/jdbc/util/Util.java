@@ -66,7 +66,7 @@ public class Util {
     public static Connection getConnection() {
         return connection;
     }
-    public static void connectionClose() throws SQLException {
+    public static void connectionClose() {
         if (connection != null) {
             try {
                 connection.close();
