@@ -12,7 +12,7 @@ import static jm.task.core.jdbc.util.Util.getSessionFactory;
 
 public class UserDaoHibernateImpl implements UserDao {
     private static SessionFactory sessionFactory;
-    User user = new User();
+
     public UserDaoHibernateImpl() {
 
     }
@@ -45,6 +45,7 @@ public class UserDaoHibernateImpl implements UserDao {
     public void saveUser(String name, String lastName, byte age) {
         try (Session session = getSessionFactory().openSession();) {
             Transaction transaction = session.beginTransaction();
+            User user = new User(name, lastName, age);
             session.save(user);
             transaction.commit();
         }
